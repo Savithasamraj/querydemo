@@ -1,0 +1,33 @@
+.forms{
+  width: 1200px;
+  height: 1000px;
+  background-color:whitesmoke;
+  font-size: 20px;
+  margin: 100px;
+}
+.form{
+  margin:150px;
+}
+#table1{
+width:900px;
+height:900px;
+background-color: lightsteelblue;
+margin-right: 5px;
+
+}
+#table2{
+width:400px;
+height: 900px;
+background-color:pink;
+}
+
+#row{
+  border-radius: 5px;
+}
+.dash{
+  width:800px;
+  height:200px;
+}
+.topic{
+  margin: 0px;
+}
