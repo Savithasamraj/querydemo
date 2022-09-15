@@ -14,24 +14,27 @@ function Register() {
     onSubmit: async (values) => {
       try {
         console.log(values)
-        const register = await axios.post("http://localhost:5000/register", values);
+        const register = await axios.post("https://quer-server.herokuapp.com/register", values);
         console.log(values)
+        
         alert(register.data.message);
-        navigate("/dashboard")
+        navigate("/form")
       } catch (error) {
         console.log(error);
       }
     },
   });
   return (
+    <>
+    <div className="body">
     <div className="container">
       <div className="col-4">
         <div className="row">
-          <form onSubmit={formik.handleSubmit}>
-            
+          <form  className="form" id="loginform" onSubmit={formik.handleSubmit}>
+          <h2 className="topics">Query Ticket raising!! </h2>
             <div class="mb-3">
               <label for="username" class="form-label">
-                UserName
+              <img className="logimage" src="https://cdn-icons-png.flaticon.com/512/4743/4743186.png"></img> UserName
               </label>
               <input
                 type="text"
@@ -40,14 +43,15 @@ function Register() {
                 name="username"
                 onChange={formik.handleChange}
                 value={formik.values.username}
+                autoComplete='off'
               />
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">
-                email id
+              <img className="logimage" src="https://cdn-icons-png.flaticon.com/512/2099/2099100.png"></img> email id
               </label>
               <input
-                type="text"
+                type="email"
                 class="form-control"
                 id="email"
                 name="email"
@@ -57,7 +61,7 @@ function Register() {
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">
-                Password
+              <img className="logimage" src="https://cdn-icons-png.flaticon.com/512/2889/2889676.png"></img> Password
               </label>
               <input
                 type="password"
@@ -83,6 +87,8 @@ function Register() {
         </div>
       </div>
     </div>
+    </div>
+    </>
   );
 }
 

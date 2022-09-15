@@ -1,11 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
+import UserContext from "./UserContxt";
 function Form() {
-
-  const navigate=useNavigate()
+  const userContextData = useContext(UserContext);
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       category: "",
@@ -15,7 +16,9 @@ function Form() {
       querydescription: "",
       timefrom: "",
       timetill: "",
-      attachments: "",
+      date:"",
+      time:""
+    
     },
     validate: (values) => {
       let errors = {};
@@ -36,214 +39,265 @@ function Form() {
       }
       if (!values.timefrom) {
         errors.emailid = "Please enter timeid";
-        
       }
       return errors;
-    }
-    ,
-    onSubmit:  async (values) => {
+    },
+    onSubmit: async (values) => {
       try {
-        console.log(values)
-        const data=await axios.post("http://localhost:5000/form",values,
-         {
+        console.log(values);
+        const data = await axios.post("https://quer-server.herokuapp.com/form", values, {
           headers: {
-            Authorization: `${localStorage.getItem("react_app_token")}`, 
-          }}
-           )
-          
-alert(data.data.message)
-navigate("/dashboard")
+            Authorization: `${localStorage.getItem("react_app_token")}`,
+          },
+        });
 
+        alert(data.data.message);
+        navigate("/dashboard");
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-
     },
   });
   return (
     <>
-    <div className="forms">
-      <div className="container">
-        <div className="col-4">
-          <div className="row">
-            <form  className="form" onSubmit={formik.handleSubmit}>
-             <div className="topic">Topic</div>
-              <label for="category" class="form-label">
-                category
-              </label>
-              <select
-                className="form-select"
-                id="category"
-                name="category"
-                onClick={formik.handleChange}
-              >
-                       
-                <option
-                  id="category"
-                  name="category"
-                 
-                >
-                  ---Select the category---
-                </option>
-                <option id="category" name="category" value="Zen class doudt">
-                  Zen class doudt
-                </option>
-                <option id="category" name="category" value="placement related">
-                  Placement relateddd
-                </option>
-                <option
-                  id="category"
-                  name="category"
-                  value="Coordination related"
-                >
-                  Coordination related
-                </option>
-                <option
-                  id="category"
-                  name="category"
-                  value="Pre-boot camp related"
-                >
-                  Pre-boot camp related
-                </option>
-        
-              </select>
-              {formik.errors.category ? (
-                    <span  style={{ color: 'red' }}>{formik.errors.category}</span>
-                  ) : null}
-              {
-                 !formik.values.category?"":  
-                  <div>
-                    
-                  <label for="subcategory" class="form-label">
-                  subcategory
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="heading">Create Query</div>
+        <div id="login">
+          <p>
+            <img
+              className="image"
+              src="https://cdn-icons-png.flaticon.com/512/3293/3293334.png"
+            ></img>
+            {userContextData.name}
+          </p>
+        </div>
+      </nav>
+      <button
+        id="back"
+        onClick={() => {
+          navigate("/dashboard");
+        }}
+      >
+        <img
+          className="back"
+          src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
+          alt="back"
+        ></img>
+        Back
+      </button>
+      <div className="forms">
+        <div className="container-form">
+          <div className="col-4">
+            <div className="row">
+              <form className="form" onSubmit={formik.handleSubmit}>
+                <div className="topic">Topic</div>
+                <label for="category" class="form-label">
+                  category
                 </label>
                 <select
                   className="form-select"
-                  id="subcategory"
-                  name="subcategory"
+                  id="category"
+                  name="category"
                   onClick={formik.handleChange}
                 >
+                  <option id="category" name="category">
+                    ---Select the category---
+                  </option>
+                  <option id="category" name="category" value="Zen class doudt">
+                    Zen class doudt
+                  </option>
                   <option
-                    id="subcategory"
-                    name="subcategory"
-                    value=" ---Select the category---"
+                    id="category"
+                    name="category"
+                    value="placement related"
                   >
-                    ---Select the subcategory---
+                    Placement related
                   </option>
-                  <option id="subcategory" name="subcategory" value="task">
-                    task
+                  <option
+                    id="category"
+                    name="category"
+                    value="Coordination related"
+                  >
+                    Coordination related
                   </option>
-                  <option id="subcategory" name="subcategory" value="codekata">
-                    codekata
-                  </option>
-                  <option id="subcategory" name="subcategory" value="webkata">
-                    webkata
-                  </option>
-                  <option id="subcategory" name="subcategory" value="class topic">
-                    classtopic
-                  </option>
-                  <option id="subcategory" name="subcategory" value="assessment">
-                    assessment
+                  <option
+                    id="category"
+                    name="category"
+                    value="Pre-boot camp related"
+                  >
+                    Pre-boot camp related
                   </option>
                 </select>
-                </div>
-                
-                }
-                  
+                {formik.errors.category ? (
+                  <span style={{ color: "red" }}>{formik.errors.category}</span>
+                ) : null}
+                {!formik.values.category ? (
+                  ""
+                ) : (
+                  <div>
+                    <label for="subcategory" class="form-label">
+                      subcategory
+                    </label>
+                    <select
+                      className="form-select"
+                      id="subcategory"
+                      name="subcategory"
+                      onClick={formik.handleChange}
+                    >
+                      <option
+                        id="subcategory"
+                        name="subcategory"
+                        value=" ---Select the category---"
+                      >
+                        ---Select the subcategory---
+                      </option>
+                      <option id="subcategory" name="subcategory" value="task">
+                        task
+                      </option>
+                      <option
+                        id="subcategory"
+                        name="subcategory"
+                        value="codekata"
+                      >
+                        codekata
+                      </option>
+                      <option
+                        id="subcategory"
+                        name="subcategory"
+                        value="webkata"
+                      >
+                        webkata
+                      </option>
+                      <option
+                        id="subcategory"
+                        name="subcategory"
+                        value="class topic"
+                      >
+                        classtopic
+                      </option>
+                      <option
+                        id="subcategory"
+                        name="subcategory"
+                        value="assessment"
+                      >
+                        assessment
+                      </option>
+                    </select>
+                  </div>
+                )}
 
-              <div class="form-group">
-                <label for="language"> select communication language</label>
-                <select
-                  class="form-select"
-                  id="language"
-                  name="language"
-                  onClick={formik.handleChange}
-                >
-                  <option
+                <div class="form-group">
+                  <label for="language" className="form-label">
+                    {" "}
+                    select communication language
+                  </label>
+                  <select
+                    class="form-select"
                     id="language"
                     name="language"
-                    value="select the language"
+                    onClick={formik.handleChange}
                   >
-                    ---Select the language---
-                  </option>
-                  <option id="language" name="language" value="Tamil">
-                    Tamil
-                  </option>
-                  <option id="language" name="language" value="English">
-                    English
-                  </option>
-                  <option id="language" name="language" value="Hindi">
-                    Hindi
-                  </option>
-                </select>
-              </div>
-<div  className="topic">Details</div>
-              <div class="mb-3">
-                <label for="querytitle" class="form-label">
-                  querytitle
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="querytitle"
-                  name="querytitle"
-                  onChange={formik.handleChange}
-                  value={formik.values.querytitle} required
-                />
-                {formik.errors.querytitle ? (
-                    <span  style={{ color: 'red' }}>{formik.errors.querytitle}</span>
-                  ) : null}
-              </div>
-              <div class="form-group">
-                <label for="querydescription">querydescription</label>
-                <textarea
-                  class="form-control"
-                  id="querydescription"
-                  rows="5"
-                  onChange={formik.handleChange}
-                  value={formik.values.querydescription} required
-                 ></textarea>
-              </div>
-<div className="topic">Your available Time ? ( Ours : 9:00 AM - 7:00 PM )</div>
-              <div class="mb-3">
-                <label for="timefrom" class="form-label">
-                  timefrom
-                </label>
-                <input
-                  type="time"
-                  
-                  class="form-control"
-                  id=" timefrom"
-                  name="timefrom"
-                  onChange={formik.handleChange}
-                  value={formik.values.timefrom} required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="timetill" class="form-label">
-                  timetill
-                </label>
-                <input
-                  type="time"
-                  class="form-control"
-                  id=" timetill"
-                  name="timetill"
-                  onChange={formik.handleChange}
-                  value={formik.values.timetill} required
-                 />
-              </div>
-<div>
-<button type="submit" class="btn btn-primary mr-3" onClick={()=>{("/dashboard")}}>
-                cancel
-              </button>
-              <button type="submit" class="btn btn-primary mr-3">
-                Submit
-              </button>
-              </div>
-            </form>
+                    <option
+                      id="language"
+                      name="language"
+                      value="select the language"
+                    >
+                      ---Select the language---
+                    </option>
+                    <option id="language" name="language" value="Tamil">
+                      Tamil
+                    </option>
+                    <option id="language" name="language" value="English">
+                      English
+                    </option>
+                    <option id="language" name="language" value="Hindi">
+                      Hindi
+                    </option>
+                  </select>
+                </div>
+                <div className="topic">Details</div>
+                <div class="mb-3">
+                  <label for="querytitle" class="form-label">
+                    querytitle
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="querytitle"
+                    name="querytitle"
+                    onChange={formik.handleChange}
+                    value={formik.values.querytitle}
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="querydescription" className="form-label">
+                    querydescription
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="querydescription"
+                    rows="5"
+                    onChange={formik.handleChange}
+                    value={formik.values.querydescription}
+                    required
+                  ></textarea>
+                </div>
+                <div className="topic">
+                  Your available Time ? ( Ours : 9:00 AM - 7:00 PM )
+                </div>
+                <div class="mb-3">
+                  <label for="timefrom" class="form-label">
+                    timefrom
+                  </label>
+                  <input
+                    type="time"
+                    class="form-control"
+                    id=" timefrom"
+                    name="timefrom"
+                    onChange={formik.handleChange}
+                    value={formik.values.timefrom}
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="timetill" class="form-label">
+                    timetill
+                  </label>
+                  <input
+                    type="time"
+                    class="form-control"
+                    id=" timetill"
+                    name="timetill"
+                    onChange={formik.handleChange}
+                    value={formik.values.timetill}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    id="button"
+                    class="btn btn-primary mr-3"
+                    onClick={() => {
+                      navigate("/dashboard");
+                    }}
+                  >
+                    cancel
+                  </button>
+                  <button
+                    type="submit"
+                    id="button"
+                    class="btn btn-primary mr-3"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );

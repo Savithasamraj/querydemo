@@ -1,0 +1,29 @@
+#innertable{
+    width:800px;
+    height:150px;
+    line-height:20px;
+    background-color:whitesmoke;
+    margin:10px 40px;
+    
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.date{
+    float: right;
+    display:flex;
+    flex-direction:column;
+}
+.span{
+    width: 400px;
+    margin: 10px;;
+color: rgb(161, 21, 138);
+font-size:20px ;
+font-weight: bold;
+}
+#contain{
+    margin: 60px;
+}
+#category{
+    margin-top: 10px;
+}
