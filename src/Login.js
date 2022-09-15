@@ -25,7 +25,7 @@ function Login() {
     },
     onSubmit: async (values) => {
       try {
-        const login = await axios.post("http://localhost:5000/login", values);
+        const login = await axios.post("https://quer-server.herokuapp.com/login", values);
         localStorage.setItem("react_app_token", login.data.token);
         // localStorage.setItem("react_app_token", login.data.name);
       userContextData.setname(values.username);
@@ -34,7 +34,7 @@ function Login() {
                   ${login.data.message}`);
                   if(login.data.message=== "Welcome to Query Ticket Raising Portal"){
                     navigate("/form")
-                    userContextData.setname(" ");
+                    // userContextData.setname(" ");
                   }
                       
        
