@@ -33,6 +33,12 @@ function Login() {
       console.log(values.username)
         alert(` Hello  ${values.username}  
                   ${login.data.message}`);
+                  if(login.data.message==="User not found" &&  "Password is incorrect"){
+                    !navigate("/form")
+                  }
+                  else{
+                    navigate("/form")
+                  }
         navigate("/form");
       } catch (error) {
         console.log(error);
