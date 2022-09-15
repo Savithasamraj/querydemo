@@ -31,8 +31,8 @@ function Login() {
       userContextData.setname(values.username);
       console.log(userContextData.name)
       console.log(values.username)
-        alert(` Hello  ${values.username}  
-                  ${login.data.message}`);
+        // alert(` Hello  ${values.username}  
+        //           ${login.data.message}`);
                   if(login.data.message==="User not found" &&  "Password is incorrect"){
                     navigate("/")
                   }
@@ -40,6 +40,8 @@ function Login() {
                     navigate("/form")
                   }
         navigate("/form");
+        alert(` Hello  ${values.username}  
+                  ${login.data.message}`);
       } catch (error) {
         console.log(error);
       }
