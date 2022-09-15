@@ -29,19 +29,16 @@ function Login() {
         localStorage.setItem("react_app_token", login.data.token);
         // localStorage.setItem("react_app_token", login.data.name);
       userContextData.setname(values.username);
-      console.log(userContextData.name)
-      console.log(values.username)
-        // alert(` Hello  ${values.username}  
-        //           ${login.data.message}`);
-                  if(login.data.message==="User not found" &&  "Password is incorrect"){
-                    navigate("/")
-                  }
-                  else{
-                    navigate("/form")
-                  }
-        navigate("/form");
+      
         alert(` Hello  ${values.username}  
                   ${login.data.message}`);
+                  if(login.data.message=== "Welcome to Query Ticket Raising Portal"){
+                    navigate("/form")
+                  }
+                  
+       
+        // alert(` Hello  ${values.username}  
+        //           ${login.data.message}`);
       } catch (error) {
         console.log(error);
       }
