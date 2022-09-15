@@ -7,7 +7,7 @@ function Dashboard() {
   const navigate=useNavigate()
   let logout=()=>{
     localStorage.removeItem('react_app_token')
-    navigate("/login")
+    navigate("/")
   }
   return (
     <>
@@ -22,7 +22,7 @@ My Queries
        </div>
     </nav>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button onSubmit={()=>{logout()}}>logout</button>
+    <button onClick={logout}>logout</button>
     </nav>
     
     <Mainpage></Mainpage>
