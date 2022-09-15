@@ -34,7 +34,7 @@ function Login() {
         alert(` Hello  ${values.username}  
                   ${login.data.message}`);
                   if(login.data.message==="User not found" &&  "Password is incorrect"){
-                    !navigate("/form")
+                    navigate("/")
                   }
                   else{
                     navigate("/form")
