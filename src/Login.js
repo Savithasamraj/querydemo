@@ -34,8 +34,9 @@ function Login() {
                   ${login.data.message}`);
                   if(login.data.message=== "Welcome to Query Ticket Raising Portal"){
                     navigate("/form")
+                    userContextData.setname(" ");
                   }
-                  
+                      
        
         // alert(` Hello  ${values.username}  
         //           ${login.data.message}`);
@@ -70,7 +71,7 @@ function Login() {
                     class="form-control"
                     id="username"
                     name="username"
-                    placeholder="enter username"
+                    placeholder="Enter username"
                     onChange={formik.handleChange}
                     value={formik.values.username}
                   />
@@ -86,13 +87,16 @@ function Login() {
                   </label>
                   <input
                     type="password"
+                    
                     className="form-control"
                     id="exampleInputPassword1"
                     name="password"
-                    placeholder="enter password"
+                    placeholder="Enter password"
                     onChange={formik.handleChange}
                     value={formik.values.password}
+                  
                   />
+                 
                 </div>
 
                 <button type="submit" className="btn btn-primary">
@@ -102,7 +106,7 @@ function Login() {
                 <div class="mb-3">
                   <p class="form-label">
                     Don't have account,
-                    <Link to="/register">Click here</Link> to
+                    <Link to="/register">Click here</Link> to register
                   </p>
                 </div>
               </form>
