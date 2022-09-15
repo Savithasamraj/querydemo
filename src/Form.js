@@ -45,7 +45,7 @@ function Form() {
     onSubmit: async (values) => {
       try {
         console.log(values);
-        const data = await axios.post("https://quer-server.herokuapp.com/form", values, {
+        const data = await axios.post("http://localhost:5000/form", values, {
           headers: {
             Authorization: `${localStorage.getItem("react_app_token")}`,
           },

@@ -14,7 +14,7 @@ function Register() {
     onSubmit: async (values) => {
       try {
         console.log(values)
-        const register = await axios.post("https://quer-server.herokuapp.com/register", values);
+        const register = await axios.post("http://localhost:5000/register", values);
         console.log(values)
         
         alert(register.data.message);

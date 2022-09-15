@@ -7,7 +7,7 @@ import UserContext from "./UserContxt";
 function Mainpage() {
   const userContextData = useContext(UserContext);
   let fetchdata = async () => {
-    const fetch = await axios.get("https://quer-server.herokuapp.com/dashboard", {
+    const fetch = await axios.get("http://localhost:5000/dashboard", {
       headers: {
         Authorization: `${localStorage.getItem("react_app_token")}`,
       },
