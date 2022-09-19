@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Form from './Form';
 import Dashboard from './Dashboard';
 import { UserProvider } from './UserContxt';
+import Mentorlogin from './Mentorlogin';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path='/register' element={<Register />}></Route>
             <Route path="/form" element={<Form />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
+            <Route  path="/mentor" element={<Mentorlogin />}></Route>
           </Routes>
         </UserProvider>
 

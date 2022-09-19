@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import "./App.css";
@@ -16,9 +16,8 @@ function Form() {
       querydescription: "",
       timefrom: "",
       timetill: "",
-      date:"",
-      time:""
-    
+      date: "",
+      time: "",
     },
     validate: (values) => {
       let errors = {};
@@ -45,14 +44,23 @@ function Form() {
     onSubmit: async (values) => {
       try {
         console.log(values);
-        const data = await axios.post("https://quer-server.herokuapp.com/form", values, {
-          headers: {
-            Authorization: `${localStorage.getItem("react_app_token")}`,
-          },
-        });
+        const data = await axios.post(
+          "https://quer-server.herukoapp.com/form",
+          values,
+          {
+            headers: {
+              Authorization: `${localStorage.getItem("react_app_token")}`,
+            },
+          }
+        );
 
         alert(data.data.message);
         navigate("/dashboard");
+
+                setTimeout((async (values)=>{
+        const assign=await axios.get("https://quer-server.herokuapp.com/mentorassign",values)
+        console.log(assign)
+                }),2000)
       } catch (error) {
         console.log(error);
       }
@@ -159,6 +167,27 @@ function Form() {
                         name="subcategory"
                         value="codekata"
                       >
+                        placement
+                      </option>
+                      <option
+                        id="subcategory"
+                        name="subcategory"
+                        value="codekata"
+                      >
+                        session time,link,feedback
+                      </option>
+                      <option
+                        id="subcategory"
+                        name="subcategory"
+                        value="codekata"
+                      >
+                        company info,portfolio,certificate
+                      </option>
+                      <option
+                        id="subcategory"
+                        name="subcategory"
+                        value="codekata"
+                      >
                         codekata
                       </option>
                       <option
@@ -220,7 +249,73 @@ function Form() {
                   <label for="querytitle" class="form-label">
                     querytitle
                   </label>
-                  <input
+                  <select
+                    className="form-select"
+                    id="category"
+                    name="category"
+                    onClick={formik.handleChange}
+                  >
+                    <option id="category" name="category">
+                      ---Select thequerytitle---
+                    </option>
+                    <option
+                      id="category"
+                      name="category"
+                      value="Zen class doudt"
+                    >
+                      javascript
+                    </option>
+                    <option
+                      id="category"
+                      name="category"
+                      value="placement related"
+                    >
+                      Reactjs
+                    </option>
+                    <option
+                      id="category"
+                      name="category"
+                      value="Coordination related"
+                    >
+                      mongodb
+                    </option>
+                    <option
+                      id="category"
+                      name="category"
+                      value="Pre-boot camp related"
+                    >
+                      sql
+                    </option>
+                    <option
+                      id="category"
+                      name="category"
+                      value="Pre-boot camp related"
+                    >
+                      nodejs
+                    </option>
+                    <option
+                      id="category"
+                      name="category"
+                      value="Pre-boot camp related"
+                    >
+                      express
+                    </option>
+                    <option
+                      id="category"
+                      name="category"
+                      value="Pre-boot camp related"
+                    >
+                      html
+                    </option>
+                    <option
+                      id="category"
+                      name="category"
+                      value="Pre-boot camp related"
+                    >
+                      css
+                    </option>
+                  </select>
+                  {/* <input
                     type="text"
                     class="form-control"
                     id="querytitle"
@@ -228,7 +323,7 @@ function Form() {
                     onChange={formik.handleChange}
                     value={formik.values.querytitle}
                     required
-                  />
+                  /> */}
                 </div>
                 <div class="form-group">
                   <label for="querydescription" className="form-label">
@@ -290,6 +385,7 @@ function Form() {
                     type="submit"
                     id="button"
                     class="btn btn-primary mr-3"
+                    onClick={formik.handleSubmit}
                   >
                     Submit
                   </button>

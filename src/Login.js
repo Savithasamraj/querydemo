@@ -5,9 +5,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import UserContext from "./UserContxt";
+import "./Component.css"
 function Login() {
   const userContextData = useContext(UserContext);
   const navigate = useNavigate();
+  const navigate1=()=>{
+    navigate("/register")
+  }
+  
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -23,7 +28,7 @@ function Login() {
       }
       return errors;
     },
-    onSubmit: async (values) => {
+    onSubmit:async (values) => {
       try {
         const login = await axios.post("https://quer-server.herokuapp.com/login", values);
         localStorage.setItem("react_app_token", login.data.token);
@@ -47,10 +52,18 @@ function Login() {
   });
   return (
     <>
+    <nav class="navbar navbar-light bg-dark">
+  <div id="login">
+    <button onClick={()=>navigate1()}>Student</button>
+    <button >Mentor</button>
+  </div>
+</nav>
       <div className="body">
+        
         <div className="container">
           <div className="col-4">
             <div className="row">
+              
               <form
                 className="form"
                 id="loginform"
