@@ -27,10 +27,11 @@ function Mainpage() {
       <div class="container" id="contain">
        
           <div  id="table1">
-            {userContextData.User.map((users) => {
+            {userContextData.User.map((users,index) => {
               return (
                 <div id="innertable">
                   <div className="date">
+                    <p>{index}</p>
                   <p >{users.date}</p>
                    <p >{users.time}</p>
                     </div>

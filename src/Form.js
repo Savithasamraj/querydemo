@@ -41,29 +41,29 @@ function Form() {
       }
       return errors;
     },
-    onSubmit: async (values) => {
-      try {
+    onSubmit: async  (values) => {
+      // try {
         console.log(values);
-        const data = await axios.post(
-          "https://quer-server.herukoapp.com/form",
-          values,
-          {
-            headers: {
-              Authorization: `${localStorage.getItem("react_app_token")}`,
-            },
-          }
-        );
+        // const data = await axios.post(
+        //   "https://quer-server.herukoapp.com/form",
+        //   values,
+        //   {
+        //     headers: {
+        //       Authorization: `${localStorage.getItem("react_app_token")}`,
+        //     },
+        //   }
+        // );
 
-        alert(data.data.message);
-        navigate("/dashboard");
+        // alert(data.data.message);
+        // navigate("/dashboard");
 
-                setTimeout((async (values)=>{
-        const assign=await axios.get("https://quer-server.herokuapp.com/mentorassign",values)
-        console.log(assign)
-                }),2000)
-      } catch (error) {
-        console.log(error);
-      }
+        //         setTimeout((async (values)=>{
+        // const assign=await axios.get("https://quer-server.herokuapp.com/mentorassign",values)
+        // console.log(assign)
+        //         }),2000)
+      // } catch (error) {
+      //   console.log(error);
+      // }
     },
   });
   return (
@@ -106,7 +106,8 @@ function Form() {
                   className="form-select"
                   id="category"
                   name="category"
-                  onClick={formik.handleChange}
+                  onChange={formik.handleChange}
+                  values={formik.values.category}
                 >
                   <option id="category" name="category">
                     ---Select the category---
@@ -150,7 +151,8 @@ function Form() {
                       className="form-select"
                       id="subcategory"
                       name="subcategory"
-                      onClick={formik.handleChange}
+                      onChange={formik.handleChange}
+                  values={formik.values.subcategory}
                     >
                       <option
                         id="subcategory"
@@ -224,7 +226,8 @@ function Form() {
                     class="form-select"
                     id="language"
                     name="language"
-                    onClick={formik.handleChange}
+                    onChange={formik.handleChange}
+                  values={formik.values.language}
                   >
                     <option
                       id="language"
@@ -253,7 +256,8 @@ function Form() {
                     className="form-select"
                     id="category"
                     name="category"
-                    onClick={formik.handleChange}
+                    onChange={formik.handleChange}
+                    values={formik.values.querytitle}
                   >
                     <option id="category" name="category">
                       ---Select thequerytitle---
@@ -381,14 +385,15 @@ function Form() {
                   >
                     cancel
                   </button>
-                  <button
+                  <input
                     type="submit"
                     id="button"
+                    value="submit"
                     class="btn btn-primary mr-3"
-                    onClick={formik.handleSubmit}
-                  >
-                    Submit
-                  </button>
+                    // onSubmit={formik.handleSubmit}
+                  />
+                    
+                  
                 </div>
               </form>
             </div>
