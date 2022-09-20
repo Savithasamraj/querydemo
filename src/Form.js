@@ -42,28 +42,28 @@ function Form() {
       return errors;
     },
     onSubmit: async  (values) => {
-      // try {
+      try {
         console.log(values);
-        // const data = await axios.post(
-        //   "https://quer-server.herukoapp.com/form",
-        //   values,
-        //   {
-        //     headers: {
-        //       Authorization: `${localStorage.getItem("react_app_token")}`,
-        //     },
-        //   }
-        // );
+        const data = await axios.post(
+          "https://quer-server.herukoapp.com/form",
+          values,
+          // {
+          //   headers: {
+          //     Authorization: `${localStorage.getItem("react_app_token")}`,
+          //   },
+          // }
+        );
 
-        // alert(data.data.message);
-        // navigate("/dashboard");
+        alert(data.data.message);
+        navigate("/dashboard");
 
         //         setTimeout((async (values)=>{
         // const assign=await axios.get("https://quer-server.herokuapp.com/mentorassign",values)
         // console.log(assign)
         //         }),2000)
-      // } catch (error) {
-      //   console.log(error);
-      // }
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
   return (

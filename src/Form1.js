@@ -48,11 +48,11 @@ function Form1() {
         const data = await axios.post(
           "https://quer-server.herukoapp.com/form",
           values,
-          {
-            headers: {
-              Authorization: `${localStorage.getItem("react_app_token")}`,
-            },
-          }
+          // {
+          //   headers: {
+          //     Authorization: `${localStorage.getItem("react_app_token")}`,
+          //   },
+          // }
         );
 
         alert(data.data.message);
