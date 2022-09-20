@@ -54,7 +54,7 @@ function Form1() {
           //   },
           // }
         );
-
+        console.log(values);
         alert(data.data.message);
         navigate("/dashboard");
 
