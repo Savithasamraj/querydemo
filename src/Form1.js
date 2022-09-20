@@ -4,8 +4,9 @@ import axios from "axios";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
 import UserContext from "./UserContxt";
-function Form() {
-  const userContextData = useContext(UserContext);
+
+function Form1() {
+    const userContextData = useContext(UserContext);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -42,30 +43,30 @@ function Form() {
       return errors;
     },
     onSubmit: async  (values) => {
-      // try {
+      try {
         console.log(values);
-        // const data = await axios.post(
-        //   "https://quer-server.herukoapp.com/form",
-        //   values,
-        //   {
-        //     headers: {
-        //       Authorization: `${localStorage.getItem("react_app_token")}`,
-        //     },
-        //   }
-        // );
+        const data = await axios.post(
+          "https://quer-server.herukoapp.com/form",
+          values,
+          {
+            headers: {
+              Authorization: `${localStorage.getItem("react_app_token")}`,
+            },
+          }
+        );
 
-        // alert(data.data.message);
-        // navigate("/dashboard");
+        alert(data.data.message);
+        navigate("/dashboard");
 
-        //         setTimeout((async (values)=>{
-        // const assign=await axios.get("https://quer-server.herokuapp.com/mentorassign",values)
-        // console.log(assign)
-        //         }),2000)
-      // } catch (error) {
-      //   console.log(error);
-      // }
+                setTimeout((async (values)=>{
+        const assign=await axios.get("https://quer-server.herokuapp.com/mentorassign",values)
+        console.log(assign)
+                }),2000)
+      } catch (error) {
+        console.log(error);
+      }
     },
-  });
+  })
   return (
     <>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -167,21 +168,21 @@ function Form() {
                       <option
                         id="subcategory"
                         name="subcategory"
-                        value="codekata"
+                        value="placement"
                       >
                         placement
                       </option>
                       <option
                         id="subcategory"
                         name="subcategory"
-                        value="codekata"
+                        value=" session time,link,feedback"
                       >
                         session time,link,feedback
                       </option>
                       <option
                         id="subcategory"
                         name="subcategory"
-                        value="codekata"
+                        value="company info,portfolio,certificate"
                       >
                         company info,portfolio,certificate
                       </option>
@@ -254,80 +255,72 @@ function Form() {
                   </label>
                   <select
                     className="form-select"
-                    id="category"
-                    name="category"
+                    id="querytitle"
+                    name="querytitle"
                     onChange={formik.handleChange}
                     values={formik.values.querytitle}
                   >
-                    <option id="category" name="category">
+                    <option id="category" name="">
                       ---Select thequerytitle---
                     </option>
                     <option
-                      id="category"
-                      name="category"
-                      value="Zen class doudt"
+                      id="querytitle"
+                      name="querytitle"
+                      value="javascript"
                     >
                       javascript
                     </option>
                     <option
-                      id="category"
-                      name="category"
-                      value="placement related"
+                      id="querytitle"
+                      name="querytitle"
+                      value="Reactjs"
                     >
                       Reactjs
                     </option>
                     <option
-                      id="category"
-                      name="category"
-                      value="Coordination related"
+                      id="querytitle"
+                      name="querytitle"
+                      value=" mongodb"
                     >
                       mongodb
                     </option>
                     <option
-                      id="category"
-                      name="category"
-                      value="Pre-boot camp related"
+                      id="querytitle"
+                      name="querytitle"
+                      value="sql"
                     >
                       sql
                     </option>
                     <option
-                      id="category"
-                      name="category"
-                      value="Pre-boot camp related"
+                      id="querytitle"
+                      name="querytitle"
+                      value=" nodejs"
                     >
                       nodejs
                     </option>
                     <option
-                      id="category"
-                      name="category"
-                      value="Pre-boot camp related"
+                      id="querytitle"
+                      name="querytitle"
+                      value="express"
                     >
                       express
                     </option>
                     <option
-                      id="category"
-                      name="category"
-                      value="Pre-boot camp related"
+                      id="querytitle"
+                      name="querytitle"
+                      value="html"
                     >
                       html
                     </option>
                     <option
-                      id="category"
-                      name="category"
-                      value="Pre-boot camp related"
+                      id="querytitle"
+                      name="querytitle"
+                      value="css"
                     >
                       css
                     </option>
                   </select>
-                  {/* <input
-                    type="text"
-                    class="form-control"
-                    id="querytitle"
-                    name="querytitle"
-                    onChange={formik.handleChange}
-                    value={formik.values.querytitle}
-                    required
-                  /> */}
+                  
                 </div>
                 <div class="form-group">
                   <label for="querydescription" className="form-label">
@@ -404,7 +397,9 @@ function Form() {
         </div>
       </div>
     </>
-  );
+
+
+  )
 }
 
-export default Form;
+export default Form1
