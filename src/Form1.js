@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "./UserContxt";
 
 function Form1() {
-    const userContextData = useContext(UserContext);
+  const userContextData = useContext(UserContext);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -42,7 +42,7 @@ function Form1() {
       }
       return errors;
     },
-    onSubmit: async  (values) => {
+    onSubmit: async (values) => {
       try {
         console.log(values);
         const data = await axios.post(
@@ -58,15 +58,15 @@ function Form1() {
         alert(data.data.message);
         navigate("/dashboard");
 
-                setTimeout((async (values)=>{
-        const assign=await axios.get("https://quer-server.herokuapp.com/mentorassign",values)
-        console.log(assign)
-                }),2000)
+        //         setTimeout((async (values)=>{
+        // const assign=await axios.get("https://quer-server.herokuapp.com/mentorassign",values)
+        // console.log(assign)
+        //         }),2000)
       } catch (error) {
         console.log(error);
       }
     },
-  })
+  });
   return (
     <>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -153,7 +153,7 @@ function Form1() {
                       id="subcategory"
                       name="subcategory"
                       onChange={formik.handleChange}
-                  values={formik.values.subcategory}
+                      values={formik.values.subcategory}
                     >
                       <option
                         id="subcategory"
@@ -228,7 +228,7 @@ function Form1() {
                     id="language"
                     name="language"
                     onChange={formik.handleChange}
-                  values={formik.values.language}
+                    values={formik.values.language}
                   >
                     <option
                       id="language"
@@ -270,57 +270,28 @@ function Form1() {
                     >
                       javascript
                     </option>
-                    <option
-                      id="querytitle"
-                      name="querytitle"
-                      value="Reactjs"
-                    >
+                    <option id="querytitle" name="querytitle" value="Reactjs">
                       Reactjs
                     </option>
-                    <option
-                      id="querytitle"
-                      name="querytitle"
-                      value=" mongodb"
-                    >
+                    <option id="querytitle" name="querytitle" value=" mongodb">
                       mongodb
                     </option>
-                    <option
-                      id="querytitle"
-                      name="querytitle"
-                      value="sql"
-                    >
+                    <option id="querytitle" name="querytitle" value="sql">
                       sql
                     </option>
-                    <option
-                      id="querytitle"
-                      name="querytitle"
-                      value=" nodejs"
-                    >
+                    <option id="querytitle" name="querytitle" value=" nodejs">
                       nodejs
                     </option>
-                    <option
-                      id="querytitle"
-                      name="querytitle"
-                      value="express"
-                    >
+                    <option id="querytitle" name="querytitle" value="express">
                       express
                     </option>
-                    <option
-                      id="querytitle"
-                      name="querytitle"
-                      value="html"
-                    >
+                    <option id="querytitle" name="querytitle" value="html">
                       html
                     </option>
-                    <option
-                      id="querytitle"
-                      name="querytitle"
-                      value="css"
-                    >
+                    <option id="querytitle" name="querytitle" value="css">
                       css
                     </option>
                   </select>
-                  
                 </div>
                 <div class="form-group">
                   <label for="querydescription" className="form-label">
@@ -379,8 +350,8 @@ function Form1() {
                     cancel
                   </button>
                   <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
+                    Submit
+                  </button>
                   {/* <input
                     type="submit"
                     id="button"
@@ -388,8 +359,6 @@ function Form1() {
                     class="btn btn-primary mr-3"
                     // onSubmit={formik.handleSubmit} */}
                   {/* /> */}
-                    
-                  
                 </div>
               </form>
             </div>
@@ -397,9 +366,7 @@ function Form1() {
         </div>
       </div>
     </>
-
-
-  )
+  );
 }
 
-export default Form1
+export default Form1;
