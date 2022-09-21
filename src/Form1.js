@@ -51,7 +51,7 @@ function Form1() {
           {
             headers: {
               Authorization: `${localStorage.getItem("react_app_token")}`,
-              "Access-Control-Allow-Origin": "*",
+              
             },
           }
         );
