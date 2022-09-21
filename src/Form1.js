@@ -44,15 +44,16 @@ function Form1() {
     },
     onSubmit: async (values) => {
       try {
-        console.log(values);
+        
         const data = await axios.post(
           "https://quer-server.herukoapp.com/form",
           values,
-          // {
-          //   headers: {
-          //     Authorization: `${localStorage.getItem("react_app_token")}`,
-          //   },
-          // }
+          {
+            headers: {
+              Authorization: `${localStorage.getItem("react_app_token")}`,
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
         );
         console.log(values);
         alert(data.data.message);
