@@ -4,7 +4,7 @@ import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./Component.css";
 function Creatementor() {
-    const navigate=useNavigate()
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -17,18 +17,20 @@ function Creatementor() {
       subject: "",
       experience: "",
     },
-    onSubmit:async (values)=>{
-        try{
-        const data=await axios.post("http://localhost:5000/mentor",values)
-        alert(data.data.message)
-        if(data.data.message==="mentor created"){
-            navigate("/adminportal")
+    onSubmit: async (values) => {
+      try {
+        const data = await axios.post(
+          "https://quer-server.herokuapp.com/mentor",
+          values
+        );
+        alert(data.data.message);
+        if (data.data.message === "mentor created") {
+          navigate("/adminportal");
         }
-    }
-    catch(error){
-        console.log(error)
-    }
-    }
+      } catch (error) {
+        console.log(error);
+      }
+    },
   });
   return (
     <>
@@ -37,7 +39,9 @@ function Creatementor() {
           <div class="row">
             <div class="col ">
               <div class="form-group col  ">
-                <label for="name" class="form-label">Name</label>
+                <label for="name" class="form-label">
+                  Name
+                </label>
                 <input
                   type="text"
                   class="form-control"
@@ -51,7 +55,9 @@ function Creatementor() {
             </div>
             <div class="col">
               <div class="form-group col">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">
+                  Password
+                </label>
                 <input
                   type="password"
                   class="form-control"
@@ -68,7 +74,9 @@ function Creatementor() {
             <div class="col">
               <div class="col">
                 <div class="form-group col">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="email" class="form-label">
+                    Email
+                  </label>
                   <input
                     type="email"
                     class="form-control"
@@ -84,7 +92,9 @@ function Creatementor() {
 
             <div class="col">
               <div class="form-group col">
-                <label for="number" class="form-label">Number</label>
+                <label for="number" class="form-label">
+                  Number
+                </label>
                 <input
                   type="number"
                   class="form-control"
@@ -100,7 +110,9 @@ function Creatementor() {
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="address" class="form-label">Address</label>
+                <label for="address" class="form-label">
+                  Address
+                </label>
                 <input
                   type="text"
                   class="form-control"
@@ -114,7 +126,9 @@ function Creatementor() {
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="address1" class="form-label">Address 2</label>
+                <label for="address1" class="form-label">
+                  Address 2
+                </label>
                 <input
                   type="text"
                   class="form-control"
@@ -127,25 +141,44 @@ function Creatementor() {
             </div>
             <div class="col">
               <div class="form-group col-md-6">
-                <label for="city" class="form-label">City</label>
-                <input type="text" class="form-control" id="city"  onChange={formik.handleChange}
-values={formik.values.city}/>
+                <label for="city" class="form-label">
+                  City
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  onChange={formik.handleChange}
+                  values={formik.values.city}
+                />
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col">
               <div class="form-group col-md-4">
-                <label for="subject" class="form-label">subject</label>
-                <select id="subject" class="form-control" name="subject" onChange={formik.handleChange}
-values={formik.values.subjec}>
+                <label for="subject" class="form-label">
+                  subject
+                </label>
+                <select
+                  id="subject"
+                  class="form-control"
+                  name="subject"
+                  onChange={formik.handleChange}
+                  values={formik.values.subjec}
+                >
                   <option for="subject" id="subject" name="subject">
                     ---Select the subject---
                   </option>
                   <option for="subject" id="subject" name="task" value="task">
                     task
                   </option>
-                  <option for="subject" id="subject"  name="placement" value="placement">
+                  <option
+                    for="subject"
+                    id="subject"
+                    name="placement"
+                    value="placement"
+                  >
                     placement
                   </option>
                   <option
@@ -162,19 +195,38 @@ values={formik.values.subjec}>
                     name="company info,portfolio,certificate"
                     value=" company info,portfolio,certificate"
                   >
-                    
                     company info,portfolio,certificate
                   </option>
-                  <option for="subject" id="subject"  name="codekata" value="codekata">
+                  <option
+                    for="subject"
+                    id="subject"
+                    name="codekata"
+                    value="codekata"
+                  >
                     codekata
                   </option>
-                  <option for="subject" id="subject"  name="webkata"value="webkata">
+                  <option
+                    for="subject"
+                    id="subject"
+                    name="webkata"
+                    value="webkata"
+                  >
                     webkata
                   </option>
-                  <option for="subject" id="subject" name="classtopic"value="class topic">
+                  <option
+                    for="subject"
+                    id="subject"
+                    name="classtopic"
+                    value="class topic"
+                  >
                     class topic
                   </option>
-                  <option for="subject" id="subject"name="assesment" value="assessment">
+                  <option
+                    for="subject"
+                    id="subject"
+                    name="assesment"
+                    value="assessment"
+                  >
                     assessment
                   </option>
                 </select>
@@ -182,9 +234,15 @@ values={formik.values.subjec}>
             </div>
             <div class="col">
               <div class="form-group col-md-4">
-                <label for="experince" class="form-label">Experience</label>
-                <select id="experince" class="form-control" onChange={formik.handleChange}
-values={formik.values.experience}>
+                <label for="experince" class="form-label">
+                  Experience
+                </label>
+                <select
+                  id="experince"
+                  class="form-control"
+                  onChange={formik.handleChange}
+                  values={formik.values.experience}
+                >
                   <option for="experince" id="experince">
                     ---no of years---
                   </option>
@@ -216,19 +274,19 @@ values={formik.values.experience}>
             </div>
           </div>
           <div>
-          <button type="submit" class="btn btn-primary mr-3">
-            Create
-          </button>
-          <button
-                    type="submit"
-                    id="button"
-                    class="btn btn-primary mr-3"
-                    onClick={() => {
-                      navigate("/adminportal");
-                    }}
-                  >
-                    cancel
-                  </button>
+            <button type="submit" class="btn btn-primary mr-3">
+              Create
+            </button>
+            <button
+              type="submit"
+              id="button"
+              class="btn btn-primary mr-3"
+              onClick={() => {
+                navigate("/adminportal");
+              }}
+            >
+              cancel
+            </button>
           </div>
         </div>
       </form>

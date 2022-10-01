@@ -7,9 +7,9 @@ import "./App.css";
 import "./Component.css"
 function Mentorpage() {
   const userContextData = useContext(UserContext);
-  const navigate = useNavigate();http://localhost:5000
+  const navigate = useNavigate();
   const fetchdata = async () => {
-    const data = await axios.get("/mentorpage", {
+    const data = await axios.get("https://quer-server.herokuapp.com/mentorpage", {
       headers: {
         Authorization: `${localStorage.getItem("react_app_tokens")}`,
       },
@@ -26,7 +26,7 @@ function Mentorpage() {
   };
    const querystatus=async (values)=>{
      console.log(values)
-const status=await axios.put("http://localhost:5000/status",values)
+const status=await axios.put("https://quer-server.herokuapp.com/status",values)
 console.log(status)
    }
   useEffect(() => {

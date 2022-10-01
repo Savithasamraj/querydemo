@@ -27,7 +27,7 @@ function Mentorlogin() {
     },
     onSubmit: async (values) => {
       try {
-        const login = await axios.post("http://localhost:5000/mentorlogin", values);
+        const login = await axios.post("https://quer-server.herokuapp.com/mentorlogin", values);
         localStorage.setItem("react_app_tokens", login.data.token);
         userContextData.setname(values.mentorname);
 
