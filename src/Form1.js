@@ -10,6 +10,7 @@ function Form1() {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
+      name:"",
       category: "",
       subcategory: "",
       language: "",
@@ -19,6 +20,11 @@ function Form1() {
       timetill: "",
       date: "",
       time: "",
+      phonenumber:"",
+      email:"",
+      mentor:"",
+      id:"",
+      status:"query not yet resolved"
     },
     validate: (values) => {
       let errors = {};
@@ -42,27 +48,47 @@ function Form1() {
       }
       return errors;
     },
-    onSubmit: async (values) => {
+    onSubmit: async function (values)  {
+      console.log(values);
       try {
-        
         const data = await axios.post(
-          "https://quer-server.herukoapp.com/form",
+          "http://localhost:5000/form", //type local host
           values,
           {
             headers: {
               Authorization: `${localStorage.getItem("react_app_token")}`,
-              
             },
           }
         );
         console.log(values);
         alert(data.data.message);
-        navigate("/dashboard");
+        // navigate("/dashboard");
 
-        //         setTimeout((async (values)=>{
-        // const assign=await axios.get("https://quer-server.herokuapp.com/mentorassign",values)
-        // console.log(assign)
-        //         }),2000)
+        setTimeout(async (data) => {
+          
+          const assign = await axios.post(
+            "http://localhost:5000/mentorassign",
+            values,
+         
+          );
+          alert(assign.data.data)
+          const update= await axios.put("http://localhost:5000/updatementor",assign.data.data,
+          {
+            headers: {
+              Authorization: `${localStorage.getItem("react_app_token")}`,
+            },
+          })             
+          alert(assign.data.message)
+          if(assign.data.message==="queryassigned"){
+
+
+            navigate("/dashboard")
+                
+
+
+          }
+          
+        }, 2000);
       } catch (error) {
         console.log(error);
       }
@@ -100,6 +126,7 @@ function Form1() {
           <div className="col-4">
             <div className="row">
               <form className="form" onSubmit={formik.handleSubmit}>
+             
                 <div className="topic">Topic</div>
                 <label for="category" class="form-label">
                   category
@@ -339,6 +366,52 @@ function Form1() {
                   />
                 </div>
 
+                <div class="mb-3">
+                  <label for="phonenumber" class="form-label">
+                  phonenumber
+                  </label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id=" phonenumber"
+                    name="phonenumber"
+                    placeholder="1234-567-890" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" required
+                    onChange={formik.handleChange}
+                    value={formik.values.phonenumber}
+                    
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="name" class="form-label">
+                 Name(please enter the registered user name)
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name" required
+                    onChange={formik.handleChange}
+                    value={formik.values.name}
+                    
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">
+                  Email
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email" required
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                    
+                  />
+                </div>
                 <div>
                   <button
                     type="submit"

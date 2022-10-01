@@ -26,7 +26,25 @@ function Register() {
   });
   return (
     <>
+    <nav class="navbar navbar-light bg-dark">
+      <div id="login">
+      <button
+        id="backs"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <img
+          className="back"
+          src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
+          alt="back"
+        ></img>
+        Back
+      </button>
+      </div>
+    </nav>
     <div className="body">
+    <h2  className="titlehead">Student Register</h2>
     <div className="container">
       <div className="col-4">
         <div className="row">

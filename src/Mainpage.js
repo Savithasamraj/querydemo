@@ -14,7 +14,7 @@ function Mainpage() {
     });
     userContextData.setUser(fetch.data);
     console.log(fetch.data);
-    // setUser([...User, fetch.data]);
+    
     console.log(userContextData.User);
   };
 
@@ -28,20 +28,23 @@ function Mainpage() {
        
           <div  id="table1">
             {userContextData.User.map((users,index) => {
+            
               return (
                 <div id="innertable">
                   <div className="date">
-                    <p>{index}</p>
-                  <p >{users.date}</p>
-                   <p >{users.time}</p>
+                    <p  className="span1">query no:{index+1}</p>
+                  <p className="span1" >{users.date}</p>
+                   <p  className="span1">{users.time}</p>
+                   
                     </div>
-                    <p id="category"><span className="span">Category:</span> {users.category}</p>
-                  <p id="subcategory"><span className="span">Subcategory:</span>{users.subcategory} </p>
+                    <p  className="span1"><span className="span">Category:</span> {users.category}</p>
+                  <p  className="span1"><span className="span">Subcategory:</span>{users.subcategory} </p>
                   
-                  {/* <p id="language"><span>Language:</span> {users.language}</p> */}
-                   <p id="title"><span className="span">Querytitle:</span> {users.querytitle}</p>
-                  <p id="description"><span className="span">Description:</span> {users.querydescription}</p>
                  
+                   <p  className="span1"><span className="span">Querytitle:</span> {users.querytitle}</p>
+                  <p  className="span1" ><span className="span">Description:</span> {users.querydescription}</p>
+                  <p  className="span1"><span className="span">Assigned to:</span> {users.mentor}</p>
+                  <p  className="span1"><span className="span">status:</span> {users.status}</p>
                   
 
                 </div>

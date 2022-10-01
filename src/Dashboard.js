@@ -22,7 +22,7 @@ My Queries
        </div>
     </nav>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button onClick={logout}>logout</button>
+    <button className=" loginbut"  onClick={logout}>logout</button>
     </nav>
     
     <Mainpage></Mainpage>

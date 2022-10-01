@@ -12,6 +12,12 @@ function Login() {
   const navigate1=()=>{
     navigate("/register")
   }
+  const navigate2=()=>{
+    navigate("/mentor")
+  }
+  const navigate3=()=>{
+    navigate("/admin")
+  }
   
   const formik = useFormik({
     initialValues: {
@@ -32,19 +38,18 @@ function Login() {
       try {
         const login = await axios.post("https://quer-server.herokuapp.com/login", values);
         localStorage.setItem("react_app_token", login.data.token);
-        // localStorage.setItem("react_app_token", login.data.name);
+        
       userContextData.setname(values.username);
       
         alert(` Hello  ${values.username}  
                   ${login.data.message}`);
                   if(login.data.message=== "Welcome to Query Ticket Raising Portal"){
                     navigate("/form")
-                    // userContextData.setname(" ");
+                    
                   }
                       
        
-        // alert(` Hello  ${values.username}  
-        //           ${login.data.message}`);
+       
       } catch (error) {
         console.log(error);
       }
@@ -54,12 +59,15 @@ function Login() {
     <>
     <nav class="navbar navbar-light bg-dark">
   <div id="login">
-    <button onClick={()=>navigate1()}>Student</button>
-    <button >Mentor</button>
+    <button  className=" loginbut"onClick={()=>navigate1()}>Student</button>
+    <button className=" loginbut"  onClick={()=>navigate2()} >Mentor</button>
+  </div>
+  <div>
+  <button  className=" loginbut"onClick={()=>navigate3()}>Admin</button>
   </div>
 </nav>
       <div className="body">
-        
+        <h2  className="titlehead">student login</h2>
         <div className="container">
           <div className="col-4">
             <div className="row">

@@ -7,7 +7,10 @@ import Form1 from './Form1';
 import Dashboard from './Dashboard';
 import { UserProvider } from './UserContxt';
 import Mentorlogin from './Mentorlogin';
-
+import Admin from './Admin';
+import Adminportal from './Adminportal';
+import Creatementor from './Creatementor';
+import Mentorpage from './Mentorpage';
 function App() {
   return (
     <>
@@ -19,6 +22,11 @@ function App() {
             <Route path="/form" element={<Form1 />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
             <Route  path="/mentor" element={<Mentorlogin />}></Route>
+            <Route  path="/admin" element={<Admin/>}></Route>
+            <Route  path="/adminportal" element={<Adminportal/>}></Route>
+            <Route  path="/creatementor" element={<Creatementor/>}></Route>
+            <Route  path="/mentorpage" element={<Mentorpage/>}></Route>
+
           </Routes>
         </UserProvider>
 

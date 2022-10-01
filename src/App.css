@@ -13,7 +13,7 @@
 }
 .container-form {
   width: 1000px;
-  height: 1400px;
+  height: 1600px;
   background-color: whitesmoke;
 
   line-height: 50px;
@@ -120,4 +120,25 @@ select {
   border: 2px solid black;
   border-radius: 15px;
   color: blueviolet;
+}
+#backs {
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid black;
+  border-radius: 15px;
+  color: blueviolet;
+}
+.titlehead{
+margin-left: 500px;
+width:250px;
+background-color:whitesmoke;
+}
+.span1{
+  font-size:20px;
+}
+#resolve{
+  font-size: 20px;
+  width: 200px;
+  border-radius: 20px;
+
 }
