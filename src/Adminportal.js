@@ -12,6 +12,12 @@ let  fetchdata=async function(){
   console.log(fetch.data)
   
 }
+useEffect(() => {
+  fetchdata()
+
+ 
+}, [])
+
   return (
     <>
       <nav class="navbar navbar-light bg-dark">
