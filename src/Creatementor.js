@@ -34,11 +34,12 @@ function Creatementor() {
   });
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
+    <h2>Mentor Details:</h2>
+      <form  className="form" onSubmit={formik.handleSubmit} >
         <div class="container-lg" id="mentor">
-          <div class="row">
-            <div class="col ">
-              <div class="form-group col  ">
+          {/* <div class="row"> */}
+            
+              <div class="mb-3"  >
                 <label for="name" class="form-label">
                   Name
                 </label>
@@ -52,9 +53,9 @@ function Creatementor() {
                   values={formik.values.name}
                 />
               </div>
-            </div>
+            
             <div class="col">
-              <div class="form-group col">
+              <div class="mb-3">
                 <label for="password" class="form-label">
                   Password
                 </label>
@@ -69,7 +70,7 @@ function Creatementor() {
                 />
               </div>
             </div>
-          </div>
+          {/* </div> */}
           <div class="row">
             <div class="col">
               <div class="col">

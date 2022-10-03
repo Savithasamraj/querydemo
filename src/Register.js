@@ -11,6 +11,17 @@ function Register() {
       password: "",
       email:""
     },
+    validate: (values) => {
+      let errors = {};
+      if (!values.username) {
+        errors.username = "Please enter username";
+      }
+      if (!values.password) {
+        errors.password = "Please enter password";
+      }
+      return errors;
+    },
+
     onSubmit: async (values) => {
       try {
         console.log(values)
@@ -18,7 +29,7 @@ function Register() {
         console.log(values)
         
         alert(register.data.message);
-        navigate("/form")
+        navigate("/")
       } catch (error) {
         console.log(error);
       }
@@ -63,6 +74,9 @@ function Register() {
                 value={formik.values.username}
                 autoComplete='off'
               />
+              {formik.errors.username ? (
+                <span  style={{ color: "red" }}className="errors">{formik.errors.username}</span>
+              ) : null}
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">
@@ -89,6 +103,9 @@ function Register() {
                 onChange={formik.handleChange}
                 value={formik.values.password}
               />
+               {formik.errors.password? (
+                <span  style={{ color: "red" }}className="errors">{formik.errors.password}</span>
+              ) : null}
             </div>
 
             <button type="submit" class="btn btn-primary">

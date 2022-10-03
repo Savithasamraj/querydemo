@@ -95,8 +95,11 @@ function Login() {
                     placeholder="Enter username"
                     onChange={formik.handleChange}
                     value={formik.values.username}
+                    
                   />
-                  
+                  {formik.errors.username ? (
+                <span className="errors">{formik.errors.username}</span>
+              ) : null}
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">
@@ -117,6 +120,9 @@ function Login() {
                     value={formik.values.password}
                   
                   />
+                  {formik.errors.password ? (
+                <span className="errors">{formik.errors.password}</span>
+              ) : null}
                  
                 </div>
 
