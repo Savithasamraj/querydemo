@@ -52,7 +52,7 @@ function Form1() {
       console.log(values);
       try {
         const data = await axios.post(
-          "http://localhost:5000/form", //type local host
+          "https://quer-server.herokuapp.com/form", //type local host
           values,
           {
             headers: {
